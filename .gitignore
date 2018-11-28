@@ -35,6 +35,7 @@ build/Release
 /bower_components
 
 # misc
+.cache
 /.cache
 .cache/
 /.sass-cache
@@ -48,6 +49,4 @@ testem.log
 .coverage/
 .nyc_output/
 e2e-logs/
-package.json
-package-lock.json
 .vscode/launch.json
