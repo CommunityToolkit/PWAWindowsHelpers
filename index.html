@@ -18,21 +18,76 @@
           border: 2px solid black;
           margin: 0px;
       }
+      .column {
+          float: left;
+          width: 50%;
+          font-family: 'Courier New', Courier, monospace;
+      }
+      /* Clear floats after the columns */
+      .row:after {
+          content: "";
+          display: table;
+          clear: both;
+      }
   </style>
   <title>Starter</title>
   </head>
 
   <body>
     <h1>Hello world</h1>
+    <div class="row"><div class="column">
     <button id="createtile">Pin Secondary Tile</button>
-    <button id="checkpin">Check Pin</button>
-    <button id="unpin">Unpin</button>
+    <form> ID:::: <input type="text" id="pinIdInput" value="12345"> Any unique value<br></form>
+    <form> Text:: <input type="text" id="pinTextInput" value="Text"> Keep it short<br></form>
+    <form> Args:: <input type="text" id="pinArgumentInput" value="myarguments"> Cannot be blank<br></form>
+    <form> Color: <input type="text" id="pinFTextInput" value="light"> light or dark<br></form>
+
     <button id="update">Update</button>
-    <button id="CheckTheme">CheckTheme</button>
+    <form> ID:::::::: <input type="text" id="updIdInput" value="12345"> Any unique value<br></form>
+    <form> Text:::::: <input type="text" id="updTextInput" value="Dave"> Keep it Short<br></form>
+    <form> ShowName:: <input type="number" id="updShowName" value="1"> Show name on tile?<br></form>
+    <form> Color::::: <input type="text" id="updFTextInput" value="dark"> light or dark<br></form>
+    <form> WinCol:::: <input type="number" id="updBGCWin" value=""> Uses Windows color strings. Leave Blank if ARGB is being used.<br></form>
+    <form> ARGB:::::: <input type="number" id="updBGC-A" value="255"><input type="text" id="updBGC-R" value="255"><input type="text" id="updBGC-G" value="15"><input type="text" id="updBGC-B" value="100"><br></form>
+    <form> Text:::::: <input type="number" id="" value=""><br></form>
+    <form> Text:::::: <input type="number" id="" value=""><br></form>
+    
+
+    <button id="unpin">Unpin</button>
+    <form action="/action_page.php"> ID:::: <input type="text" name="fname" value="12345"><br></form>
+    
+
+    <button id="checkpin">Check Pin</button><br>
+  
+
+  </div><div class="column">
+    <button id="CheckTheme">CheckTheme</button><br>
+    
+
     <button id="titleBarColor">Change Title Bar</button>
+    <form action="/action_page.php">
+      *: <input type="text" name="fname"><br>
+    </form>
+    
+
     <button id="compactOverlay">Compact Overlay Toggle</button>
+    <form action="/action_page.php">
+      *: <input type="text" name="fname"><br>
+    </form>
+    
+
     <button id="addTimeline">Timeline</button>
+    <form action="/action_page.php">
+      *: <input type="text" name="fname"><br>
+    </form>
+    
+
     <button id="background">Change Background</button>
+    <form action="/action_page.php">
+      *: <input type="text" name="fname"><br>
+    </form>
+    
+  </div></div><br><br>
     <!--
       Note, normally you cannot link directly to typescript files in an html file
       but for simplicity of this learning starter, i have set it up to enable this
