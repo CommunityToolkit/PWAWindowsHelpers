@@ -1,16 +1,45 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Starter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <style type="text/css">
+      .ex1 {
+          width: 600px;
+          background-color: #DDDDDD;
+          padding: 0px;
+          border: 2px solid black;
+          margin: 0px;
+      }
+      .ex2 {
+          width: 600px;
+          background-color: #AAAAAA;
+          padding: 0px;
+          border: 2px solid black;
+          margin: 0px;
+      }
+  </style>
+  <title>Starter</title>
   </head>
 
   <body>
     <h1>Hello world</h1>
-
+    <button id="createtile">Pin Secondary Tile</button>
+    <button id="checkpin">Check Pin</button>
+    <button id="unpin">Unpin</button>
+    <button id="update">Update</button>
+    <button id="CheckTheme">CheckTheme</button>
+    <button id="titleBarColor">Change Title Bar</button>
+    <button id="compactOverlay">Compact Overlay Toggle</button>
+    <button id="addTimeline">Timeline</button>
+    <button id="background">Change Background</button>
     <!--
       Note, normally you cannot link directly to typescript files in an html file
       but for simplicity of this learning starter, i have set it up to enable this
     -->
+    <div class="ex2">Console:</div>
+    <pre class="ex1" id="log" display="block" font-family="monospace" white-space="pre" margin="1em 0"></pre>
+
     <script src="src/app.ts"></script>
   </body>
 </html>
