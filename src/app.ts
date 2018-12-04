@@ -5,17 +5,35 @@ import * as util from './utils';
 / =========================== */
 window.onload = function () {
     document.getElementById("createtile").onclick = function (evt) {
-        var text = "Text";
-        var activationArguments = "myargument";
-        var tileId = "12345";
+        //var text = "Text";
+        var text = (document.getElementById("pinTextInput") as any).value;
+        var activationArguments = (document.getElementById("pinArgumentInput") as any).value;
+        var tileId = (document.getElementById("pinIdInput") as any).value;
         var logoUri = "";
         var uriSmallLogo = "";
-        util.createSecondaryTile(text, activationArguments, tileId, logoUri, uriSmallLogo);
+        var foregroundText = (document.getElementById("pinFTextInput") as any).value;
+        util.createSecondaryTile(text, activationArguments, tileId, logoUri, uriSmallLogo, foregroundText);
     };
     
-    document.getElementById("CheckTheme").onclick = function (evt) {
-        var theme = util.checkForDarkTheme();
-        console.log(theme);
+    document.getElementById("update").onclick = function (evt) {
+        util.updateSecondaryTile((document.getElementById("updIdInput") as any).value,
+            {
+                displayName: (document.getElementById("updTextInput") as any).value, // accepts strings. Keep short to avoid truncation.
+                showNameOnSquare: (document.getElementById("updShowName") as any).value, // accepts 0 or 1. 0 is to hide displayName, 1 is to show displayName
+                foregroundText: (document.getElementById("updFTextInput") as any).value, // changes text color between 'dark' or 'light'
+                backgroundColorWin: (document.getElementById("updBGCWin") as any).value, // accepts Windows.UI.Colors.[Color]  Leave '' to use ARGB
+                backgroundColor: { // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
+                    a: (document.getElementById("updBGC-A") as any).value,
+                    r: (document.getElementById("updBGC-R") as any).value,
+                    g: (document.getElementById("updBGC-G") as any).value,
+                    b: (document.getElementById("updBGC-B") as any).value,
+                },
+                squareTinyUri: '', //Square30x30Logo
+                squareSmallUri: '', //Square70x70Logo
+                squareMedUri: '', //Square150x150Logo
+                squareWideUri: '', //Square310x150Logo
+                squareLargeUri: '', //Square310x310Logo
+            });
     };
 
     document.getElementById("checkpin").onclick = function (evt) {
@@ -27,27 +45,10 @@ window.onload = function () {
         util.removeSecondaryTile('12345');
     };
 
-    document.getElementById("update").onclick = function (evt) {
-        util.updateSecondaryTile('12345',
-            {
-                displayName: "John", // accepts strings. Keep short to avoid truncation.
-                showNameOnSquare: 1, // accepts 0 or 1. 0 is to hide displayName, 1 is to show displayName
-                foregroundText: 'dark', // changes text color, 'dark' and 0 change it to dark letters, 'light' and 1 change it to light letters.
-                backgroundColorWin: '', // accepts Windows.UI.Colors.[Color]  Leave '' to use ARGB
-                backgroundColor: { // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
-                    a: 255,
-                    r: 255,
-                    g: 15,
-                    b: 100
-                },
-                squareTinyUri: '', //Square30x30Logo
-                squareSmallUri: '', //Square70x70Logo
-                squareMedUri: 'ms-appx:///images/Square150x150LogoNEW.png', //Square150x150Logo
-                squareWideUri: 'ms-appx:///images/Square310x150LogoNEW.png', //Square310x150Logo
-                squareLargeUri: 'ms-appx:///images/Square310x310LogoNEW.png', //Square310x310Logo
-            });
+    document.getElementById("CheckTheme").onclick = function (evt) {
+        var theme = util.checkForDarkTheme();
+        console.log(theme);
     };
-
     document.getElementById("titleBarColor").onclick = function (evt) {
         util.changeAppTitleBarColor({ // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
             backgroundColor: { a: 255, r: 24, g: 260, b: 216 },

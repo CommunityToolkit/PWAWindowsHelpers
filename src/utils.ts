@@ -8,7 +8,7 @@
 //tileID - Unique ID that lets other functions change or unpin this tile (required)
 //logoURI - Image file path
 //uriSmallLogo - Image file path
-export function createSecondaryTile(text, activationArguments = null, tileId, logoUri = null, uriSmallLogo = null) {
+export function createSecondaryTile(text, activationArguments = null, tileId, logoUri = null, uriSmallLogo = null, foregroundText = null) {
   if (!text || !tileId) {
       console.log("No text or tileId supplied.")
       return;
@@ -22,6 +22,20 @@ export function createSecondaryTile(text, activationArguments = null, tileId, lo
   var tile;
   try {
       tile = new Windows.UI.StartScreen.SecondaryTile(tileId, text, text, activationArguments, newTileDesiredSize, logoUri);
+// Include any tile properties here
+if (foregroundText) {
+    if (foregroundText == "dark") {
+        var foregroundTextVal = 0
+        tile.foregroundText = foregroundTextVal
+    } else if (foregroundText == "light") {
+        var foregroundTextVal = 1
+        tile.foregroundText = foregroundTextVal
+    }
+}
+
+
+
+// Include any tile properties here
   } catch (e) {
       //Utils.error('failed to create secondary tile', e);
       return;
@@ -111,21 +125,18 @@ export function updateSecondaryTile(tileId, options) {
         }
 
         //foreground text
-        /*
+        
         if (options.foregroundText) {
+            var showText = Windows.UI.StartScreen.TileOptions.showNameOnLogo
+            tileToBeUpdated.tileOptions = showText
             if (options.foregroundText == "dark") {
-                var value = Windows.UI.StartScreen.ForegroundText.dark;
-                tileToBeUpdated.tileOptions = value;
+                var foregroundText = 0
+                tileToBeUpdated.foregroundText = foregroundText
             } else if (options.foregroundText == "light") {
-                var value = Windows.UI.StartScreen.ForegroundText.light;
-                tileToBeUpdated.tileOptions = value; d
+                var foregroundText = 1
+                tileToBeUpdated.foregroundText = foregroundText
             }
-        }*/
-        if (options.foregroundText) {
-            var value = options.foregroundText
-            tileToBeUpdated.foregroundText = value;
-        };
-
+        }
 
 
 
