@@ -1,41 +1,52 @@
-  /* =========================== /
+import 'babel-polyfill';
+
+/* =========================== /
  /    Create Seccondary Tile    /
 / =========================== */
 
 //Options:
-//text - text to show secondary tile (required)
-//activationArguments - arguments used when app is opened through tile
 //tileID - Unique ID that lets other functions change or unpin this tile (required)
+//title - title name of secondary tile (required)
+//activationArguments - arguments used when app is opened through tile
 //logoURI - Image file path
-//uriSmallLogo - Image file path
-export function createSecondaryTile(text, activationArguments = null, tileId, logoUri = null, uriSmallLogo = null, foregroundText = null) {
-  if (!text || !tileId) {
-      console.log("No text or tileId supplied.")
+
+export function createSecondaryTile(tileId, options) {
+  if (!tileId) {
+      console.log("No tileId supplied.")
       return;
   }
-  var currentTime = new Date();
-  logoUri = logoUri || new Windows.Foundation.Uri("ms-appx:///images/Square150x150Logo.png");
-  uriSmallLogo = uriSmallLogo || new Windows.Foundation.Uri("ms-appx:///images/Square150x150Logo.png");
+  console.log(options.logoUri)
+  var logoUri = new Windows.Foundation.Uri(options.logoUri);
   var newTileDesiredSize = Windows.UI.StartScreen.TileOptions.showNameOnLogo;
-  tileId = tileId || activationArguments;
-
+  console.log(logoUri)
+  if (!options.activationArguments)
+ {
+     options.activationArguments = " ";
+ }
   var tile;
   try {
-      tile = new Windows.UI.StartScreen.SecondaryTile(tileId, text, text, activationArguments, newTileDesiredSize, logoUri);
-// Include any tile properties here
-if (foregroundText) {
-    if (foregroundText == "dark") {
+      tile = new Windows.UI.StartScreen.SecondaryTile(tileId, options.title, options.title, options.activationArguments, newTileDesiredSize, logoUri);
+// Include any tile properties here v
+
+//Title text color
+if (options.foregroundText) {
+    if (options.foregroundText == "dark") {
         var foregroundTextVal = 0
         tile.foregroundText = foregroundTextVal
-    } else if (foregroundText == "light") {
+    } else if (options.foregroundText == "light") {
         var foregroundTextVal = 1
         tile.foregroundText = foregroundTextVal
     }
 }
+// Background Color Update Code:
+if (options.backgroundColorWin) {
+    tile.backgroundColor = options.backgroundColorWin;
+    } else if (options.backgroundColor.a && options.backgroundColor.r && options.backgroundColor.g && options.backgroundColor.b) {
+        tile.backgroundColor = Windows.UI.ColorHelper.fromArgb(options.backgroundColor.a, options.backgroundColor.r, options.backgroundColor.g, options.backgroundColor.b);
+    };
 
 
-
-// Include any tile properties here
+// Include any tile properties here ^
   } catch (e) {
       //Utils.error('failed to create secondary tile', e);
       return;
@@ -113,10 +124,6 @@ export function updateSecondaryTile(tileId, options) {
         if (options.displayName) {
             tileToBeUpdated.displayName = options.displayName;
         }
-        if (options.showNameOnSquare) {
-            var showName = options.showNameOnSquare;
-            tileToBeUpdated.tileOptions = showName;
-        }
 
         //Update Medium 150x150 Uri
         if (options.squareMedUri) {
@@ -125,21 +132,27 @@ export function updateSecondaryTile(tileId, options) {
         }
 
         //foreground text
-        
-        if (options.foregroundText) {
+        if(options.showNameOnSquare == 0){
+            var showText = Windows.UI.StartScreen.TileOptions.none
+            console.log("Expecting: 1 Show: "+showText)
+        } else {
             var showText = Windows.UI.StartScreen.TileOptions.showNameOnLogo
+            console.log("Expecting: 0 Show: "+showText)
+        }
             tileToBeUpdated.tileOptions = showText
+
+
+        if (options.foregroundText) {
             if (options.foregroundText == "dark") {
                 var foregroundText = 0
                 tileToBeUpdated.foregroundText = foregroundText
-            } else if (options.foregroundText == "light") {
+            } if (options.foregroundText == "light") {
                 var foregroundText = 1
                 tileToBeUpdated.foregroundText = foregroundText
+            } else {
+                
             }
         }
-
-
-
         // Sync
         tileToBeUpdated.updateAsync().then(function (success) {
             console.log("Secondary Tile ID [" + tileId + "] was updated!")
