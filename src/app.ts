@@ -5,14 +5,21 @@ import * as util from './utils';
 / =========================== */
 window.onload = function () {
     document.getElementById("createtile").onclick = function (evt) {
-        //var text = "Text";
-        var text = (document.getElementById("pinTextInput") as any).value;
-        var activationArguments = (document.getElementById("pinArgumentInput") as any).value;
-        var tileId = (document.getElementById("pinIdInput") as any).value;
-        var logoUri = "";
-        var uriSmallLogo = "";
-        var foregroundText = (document.getElementById("pinFTextInput") as any).value;
-        util.createSecondaryTile(text, activationArguments, tileId, logoUri, uriSmallLogo, foregroundText);
+        util.createSecondaryTile(
+            (document.getElementById("pinIdInput") as any).value, // TileId
+            {
+            title: (document.getElementById("pinTextInput") as any).value,
+            activationArguments: (document.getElementById("pinArgumentInput") as any).value,
+            logoUri: (document.getElementById("pinUri") as any).value,
+            foregroundText: (document.getElementById("pinFTextInput") as any).value,
+            backgroundColorWin: (document.getElementById("pinBGCWin") as any).value, // accepts Windows.UI.Colors.[Color]  Leave '' to use ARGB
+            backgroundColor: { // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
+                a: (document.getElementById("pinBGC-A") as any).value,
+                r: (document.getElementById("pinBGC-R") as any).value,
+                g: (document.getElementById("pinBGC-G") as any).value,
+                b: (document.getElementById("pinBGC-B") as any).value
+            }
+        });
     };
     
     document.getElementById("update").onclick = function (evt) {
@@ -26,13 +33,13 @@ window.onload = function () {
                     a: (document.getElementById("updBGC-A") as any).value,
                     r: (document.getElementById("updBGC-R") as any).value,
                     g: (document.getElementById("updBGC-G") as any).value,
-                    b: (document.getElementById("updBGC-B") as any).value,
+                    b: (document.getElementById("updBGC-B") as any).value
                 },
-                squareTinyUri: '', //Square30x30Logo
-                squareSmallUri: '', //Square70x70Logo
-                squareMedUri: '', //Square150x150Logo
+                squareTinyUri: (document.getElementById("updUri") as any).value, //Square30x30Logo
+                squareSmallUri: (document.getElementById("updUri") as any).value, //Square70x70Logo
+                squareMedUri: (document.getElementById("updUri") as any).value, //Square150x150Logo
                 squareWideUri: '', //Square310x150Logo
-                squareLargeUri: '', //Square310x310Logo
+                squareLargeUri: (document.getElementById("updUri") as any).value, //Square310x310Logo
             });
     };
 
@@ -78,7 +85,7 @@ window.onload = function () {
     document.getElementById("addTimeline").onclick = function (evt) {
         var id = "23456";
         var title = "Banana";
-        var bodyText = "Graasdpe";
+        var bodyText = "Grape";
         var imagePath = "";
         var activationUri = "https://www.google.com";
         util.addTimelineActivity(id, title, bodyText, imagePath, activationUri);
