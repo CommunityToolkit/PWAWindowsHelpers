@@ -38,23 +38,23 @@
     <h1>Hello world</h1>
     <div class="row"><div class="column"></div>
     <button id="createtile">Pin Secondary Tile</button>
-    <form> ::::::::ID <input type="text" id="pinIdInput" value="12345"> Any unique value<br></form>
-    <form> ::::::Text <input type="text" id="pinTextInput" value="Text"> Keep it short<br></form>
-    <form> ::::::Args <input type="text" id="pinArgumentInput" value="myarguments"> On click of tile<br></form>
-    <form> Text Color <input type="text" id="pinFTextInput" value="light"> light or dark<br></form>
-    <form> ::::WinCol <input type="text" id="pinBGCWin" value=""> Use Windows color strings. Blank if using ARGB.<br></form>
-    <form> ::::::ARGB <input type="number" id="pinBGC-A" value="255"><input type="text" id="pinBGC-R" value="15"><input type="text" id="pinBGC-G" value="100"><input type="text" id="pinBGC-B" value="255"><br></form>
-    <form> :::IconURI <input type="text" id="pinUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
+    <form> :ID <input type="text" id="pinIdInput" value="12345"> Any unique value<br></form>
+    <form> :Text <input type="text" id="pinTextInput" value="Text"> Keep it short<br></form>
+    <form> :Args <input type="text" id="pinArgumentInput" value="myarguments"> On click of tile<br></form>
+    <form> :Text Color <input type="text" id="pinFTextInput" value="light"> light or dark<br></form>
+    <form> :WinCol <input type="text" id="pinBGCWin" value=""> Use Windows color strings. Blank if using ARGB.<br></form>
+    <form> :ARGB <input type="number" id="pinBGC-A" value="255"><input type="text" id="pinBGC-R" value="15"><input type="text" id="pinBGC-G" value="100"><input type="text" id="pinBGC-B" value="255"><br></form>
+    <form> :IconURI <input type="text" id="pinUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
 
 
     <br><button id="update">Update</button>
-    <form> ::::::::ID <input type="text" id="updIdInput" value="12345"> Any unique value<br></form>
-    <form> ::::::Text <input type="text" id="updTextInput" value="Dave"> Keep it Short<br></form>
-    <form> ::ShowName <input type="number" id="updShowName" value= 1> Show name on tile?<br></form>
-    <form> Text Color <input type="text" id="updFTextInput" value="dark"> light or dark<br></form>
-    <form> ::::WinCol <input type="text" id="updBGCWin" value=""> Use Windows color strings. Blank if using ARGB.<br></form>
-    <form> ::::::ARGB <input type="number" id="updBGC-A" value="255"><input type="text" id="updBGC-R" value="255"><input type="text" id="updBGC-G" value="15"><input type="text" id="updBGC-B" value="100"><br></form>
-    <form> :::IconURI <input type="text" id="updUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
+    <form> :ID <input type="text" id="updIdInput" value="12345"> Any unique value<br></form>
+    <form> :Text <input type="text" id="updTextInput" value="Dave"> Keep it Short<br></form>
+    <form> :ShowName <input type="number" id="updShowName" value= 1> Show name on tile?<br></form>
+    <form> :Text Color <input type="text" id="updFTextInput" value="dark"> light or dark<br></form>
+    <form> :WinCol <input type="text" id="updBGCWin" value=""> Use Windows color strings. Blank if using ARGB.<br></form>
+    <form> :ARGB <input type="number" id="updBGC-A" value="255"><input type="text" id="updBGC-R" value="255"><input type="text" id="updBGC-G" value="15"><input type="text" id="updBGC-B" value="100"><br></form>
+    <form> :IconURI <input type="text" id="updUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
   
 
     <br><button id="unpin">Unpin</button>
@@ -66,9 +66,11 @@
     <br><button id="compactOverlay">Compact Overlay Toggle</button><br>
 
     <br><button id="addTimeline">Timeline</button><br>
-    <form"> :Title <input type="text" name="timeTitle"><br></form>
-    <form"> ::Body <input type="text" name="timeBody"><br></form>
-    
+    <form> :Id <input type="text" name="timeId" value="23456"><br></form>
+    <form> :Title <input type="text" name="timeTitle" value="Timeline Title"><br></form>
+    <form> :Body <input type="text" name="timeBody" value="Timeline Body"><br></form>
+    <form> :IconURI <input type="text" name="timeUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
+    <form> :Act URL<input type="text" name="timeAct" value="https://www.google.com"><br></form>
 
     <br><button id="background">Change Background</button>
     <form> URI <input type="text" name="bgURI"><br></form>

@@ -83,11 +83,11 @@ window.onload = function () {
         util.changeDesktopBackgroundImage(localImagePath);
     };
     document.getElementById("addTimeline").onclick = function (evt) {
-        var id = "23456";
-        var title = "Banana";
-        var bodyText = "Grape";
-        var imagePath = "";
-        var activationUri = "https://www.google.com";
+        var id = (document.getElementById("timeId") as any).innerHTML;
+        var title = (document.getElementById("timeTitle") as any).innerHTML;
+        var bodyText = (document.getElementById("timeBody") as any).innerHTML;
+        var imagePath =(document.getElementById("timeUri") as any).innerHTML;
+        var activationUri =(document.getElementById("timeAct") as any).innerHTML;
         util.addTimelineActivity(id, title, bodyText, imagePath, activationUri);
     };
 };

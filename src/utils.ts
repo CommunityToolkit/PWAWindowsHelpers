@@ -259,11 +259,11 @@ export async function changeDesktopBackgroundImage(localImagePath) {
 /       Add To Timeline        /
 / =========================== */
 
-export async function addTimelineActivity(id, title, bodyText, imagePath, activationUri) {
+export async function addTimelineActivity(id,title,bodyText,imagePath,activationUri) {
     if (!window.window) {
         return false;
     }
-
+console.log(title, " ", bodyText, " ", imagePath, " ", activationUri)
     const imageUrl = window.location.protocol + '//' + window.location.host + imagePath;
 
     // build adaptive card
