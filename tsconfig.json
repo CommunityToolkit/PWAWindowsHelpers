@@ -4,7 +4,8 @@
     "module": "commonjs",
     "noEmitOnError": true,
     "target": "es2015",
-    "outDir": "dist"
+    "outDir": "dist",
+    "declaration": true
   },
   "exclude": [
     "node_modules"
