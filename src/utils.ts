@@ -1,5 +1,3 @@
-import 'babel-polyfill';
-
 /* =========================== /
  /    Create Seccondary Tile    /
 / =========================== */
