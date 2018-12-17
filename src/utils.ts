@@ -1,3 +1,5 @@
+import "regenerator-runtime/runtime";
+import "babel-polyfill"
 /* =========================== /
  /    Create Seccondary Tile    /
 / =========================== */
@@ -257,27 +259,27 @@ export async function changeDesktopBackgroundImage(localImagePath) {
 /       Add To Timeline        /
 / =========================== */
 
-export async function addTimelineActivity(id,title,bodyText,imagePath,activationUri) {
+export async function addTimelineActivity(options) {
     if (!window.window) {
         return false;
     }
-console.log(title, " ", bodyText, " ", imagePath, " ", activationUri)
-    const imageUrl = window.location.protocol + '//' + window.location.host + imagePath;
+console.log(options.title, " ", options.bodyText, " ", options.imagePath, " ", options.activationUri)
+    const imageUrl = window.location.protocol + '//' + window.location.host + options.imagePath;
 
     // build adaptive card
     let cardJson = Object.assign({}, adaptiveCardTemplate);
     cardJson.backgroundImage = imageUrl;
-    cardJson.body[0].items[0].text = title;
-    cardJson.body[0].items[1].text = bodyText;
+    cardJson.body[0].items[0].text = options.title;
+    cardJson.body[0].items[1].text = options.bodyText;
     const adaptiveCard = (Windows.UI as any).Shell.AdaptiveCardBuilder.createAdaptiveCardFromJson(JSON.stringify(cardJson));
 
     const channel = (Windows.ApplicationModel as any).UserActivities.UserActivityChannel.getDefault();
 
     // create and save activity
-    const activity = await channel.getOrCreateUserActivityAsync(id);
+    const activity = await channel.getOrCreateUserActivityAsync(options.id);
     activity.visualElements.content = adaptiveCard;
-    activity.visualElements.displayText = bodyText;
-    activity.activationUri = new Windows.Foundation.Uri(activationUri);
+    activity.visualElements.displayText = options.bodyText;
+    activity.activationUri = new Windows.Foundation.Uri(options.activationUri);
 
     await activity.saveAsync();
     console.log("Timeline Updated")

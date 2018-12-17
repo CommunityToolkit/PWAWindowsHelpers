@@ -27,7 +27,7 @@ coverage
 build/Release
 
 # compiled output
-/dist
+/dist/utils.map
 /tmp
 
 # dependencies
