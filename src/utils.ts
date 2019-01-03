@@ -79,6 +79,7 @@ if (options.backgroundColorWin) {
       });
   }
 }
+
   /* =========================== /
  /    Remove Seccondary Tile    /
 / =========================== */
