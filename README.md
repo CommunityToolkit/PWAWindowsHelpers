@@ -1,8 +1,22 @@
 # Simple Progressive Web App API
 
-To download without node, run `git clone https://github.com/jgw96/simple-typescript-starter.git`
-- Run `npm install`
-- Run `npm run dev`
-- Open your browser to `http://localhost:1234` if it does not automatically open in your default browser
-- Start building! As you make changes and save them, be sure to reload the app in your browser (hit the reload button or ctrl + r)
+Github: `https://github.com/bixybixy2/TS-PWAAPI`
+- Download utils.js from dist folder and add to your project
+
+NPM: `https://www.npmjs.com/package/ts-pwaapi`
+- From the command line, run `npm i ts-pwaapi` 
+
+Functions that are imported:
+- createSecondaryTile(tileId, options)
+Options group includes title, activationArguments, logoUri, foregroundText, backgroundColorWin, and backgroundColor{a,r,g,b}
+- updateSecondaryTile(tileId, options)
+Options group includes displayName, showNameOnSquare, foregroundText, squareMedUri, backgroundColorWin, and backgroundColor{a,r,g,b},
+- removeSecondaryTile(tileId)
+- checkForDarkTheme()
+- changeAppTitleBarColor(colorOptions)
+Options group includes backgroundColor, foregroundColor, buttonBackgroundColor, buttonForegroundColor, buttonHoverBackgroundColor, buttonHoverFOregroundColor, buttonPressedBackgroundColor, buttonPressedForegroundColor, inactiveBackgroundColor, inactiveForegroundColor, buttonInactiveBackgroundColor, buttonInactiveForegroundColor. All use {a,r,g,b}
+- toggleCompactOverlayMode()
+- addTimelineActivity(options)
+Options group includes id, title, bodytext, imagepath, and activationUri.
+- changeDesktopBackgroundImage(localImagePath)
 
