@@ -1,5 +1,5 @@
 import "regenerator-runtime/runtime";
-import "babel-polyfill"
+// import "babel-polyfill"
 /* =========================== /
  /    Create Seccondary Tile    /
 / =========================== */
