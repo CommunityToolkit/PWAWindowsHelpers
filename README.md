@@ -7,13 +7,16 @@ NPM: `https://www.npmjs.com/package/ts-pwaapi`
 - From the command line, run `npm i ts-pwaapi` 
 
 Functions that are imported:
-- createSecondaryTile(tileId, options)
 
+- createSecondaryTile(tileId, options)
 Options group includes title, activationArguments, logoUri, foregroundText, backgroundColorWin, and backgroundColor{a,r,g,b}
 
-- updateSecondaryTile(tileId, options)
+createSecondaryTile(12345, {title: SecondaryTile, activationArguments: Args, logoUri: URI, foregroundText: light, backgroundColorWin: '', backgroundColor: {a: 255, r: 255, g: 255, b: 255})
 
+- updateSecondaryTile(tileId, options)
 Options group includes displayName, showNameOnSquare, foregroundText, squareMedUri, backgroundColorWin, and backgroundColor{a,r,g,b},
+
+updateSecondaryTile(12345, {displayName: SecondaryTile, showNameOnSquare: 1, foregroundText: light, backgroundColorWin: '', backgroundColor: {a: 255, r: 255, g: 255, b: 255} })
 
 - removeSecondaryTile(tileId)
 
