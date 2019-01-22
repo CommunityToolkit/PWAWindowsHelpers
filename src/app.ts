@@ -1,7 +1,7 @@
 import * as util from './utils';
 
-  /* =========================== /
- /    html button controller    /
+/* =========================== /
+/    html button controller    /
 / =========================== */
 window.onload = function () {
     document.getElementById("createtile").onclick = function (evt) {
