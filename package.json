@@ -2,19 +2,18 @@
   "name": "ts-pwaapi",
   "version": "1.0.10",
   "description": "",
-  "main": "dist/utils.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/utils.js",
+  "types": "lib/utils.d.ts",
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build src/utils.ts"
+    "build": "tsc && webpack"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "babel-polyfill": "^6.26.0",
-    "parcel-bundler": "^1.11.0",
-    "typescript": "^3.2.2"
+    "@types/winrt-uwp": "0.0.19",
+    "typescript": "^3.2.2",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
   },
   "files": [
     "dist/"
