@@ -83,6 +83,24 @@
       Note, normally you cannot link directly to typescript files in an html file
       but for simplicity of this learning starter, i have set it up to enable this
     -->
-    <script src="src/app.ts"></script>
+    <script src="dist/pwa.js"></script>
+
+    <script>
+      let tileBtn = document.getElementById('createtile');
+      tileBtn.onclick = _ => PWA.createSecondaryTile(
+        document.getElementById("pinIdInput").value, { // TileId
+          title: document.getElementById("pinTextInput").value,
+          activationArguments: document.getElementById("pinArgumentInput").value,
+          logoUri: document.getElementById("pinUri").value,
+          foregroundText: document.getElementById("pinFTextInput").value,
+          backgroundColorWin: document.getElementById("pinBGCWin").value, // accepts Windows.UI.Colors.[Color]  Leave '' to use ARGB
+          backgroundColor: { // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
+            a: document.getElementById("pinBGC-A").value,
+            r: document.getElementById("pinBGC-R").value,
+            g: document.getElementById("pinBGC-G").value,
+            b: document.getElementById("pinBGC-B").value
+          }
+        });
+    </script>
   </body>
 </html>
