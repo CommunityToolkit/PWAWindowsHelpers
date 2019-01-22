@@ -4,10 +4,12 @@
     "module": "commonjs",
     "noEmitOnError": true,
     "target": "es5",
-    "outDir": "dist",
+    "outDir": "lib",
     "declaration": true
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "lib",
+    "dist"
   ]
 }
