@@ -38,76 +38,127 @@
     <h1>Hell0 world</h1>
     <div class="row"><div class="column"></div>
     <button id="createtile">Pin Secondary Tile</button>
-    <form> :ID <input type="text" id="pinIdInput" value="12345"> Any unique value<br></form>
-    <form> :Text <input type="text" id="pinTextInput" value="Text"> Keep it short<br></form>
-    <form> :Args <input type="text" id="pinArgumentInput" value="myarguments"> On click of tile<br></form>
-    <form> :Text Color <input type="text" id="pinFTextInput" value="light"> light or dark<br></form>
-    <form> :WinCol <input type="text" id="pinBGCWin" value=""> Use Windows color strings. Blank if using ARGB.<br></form>
-    <form> :ARGB <input type="number" id="pinBGC-A" value="255"><input type="text" id="pinBGC-R" value="15"><input type="text" id="pinBGC-G" value="100"><input type="text" id="pinBGC-B" value="255"><br></form>
-    <form> :IconURI <input type="text" id="pinUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
-
-
     <br><button id="update">Update</button>
-    <form> :ID <input type="text" id="updIdInput" value="12345"> Any unique value<br></form>
-    <form> :Text <input type="text" id="updTextInput" value="Dave"> Keep it Short<br></form>
-    <form> :ShowName <input type="number" id="updShowName" value= 1> Show name on tile?<br></form>
-    <form> :Text Color <input type="text" id="updFTextInput" value="dark"> light or dark<br></form>
-    <form> :WinCol <input type="text" id="updBGCWin" value=""> Use Windows color strings. Blank if using ARGB.<br></form>
-    <form> :ARGB <input type="number" id="updBGC-A" value="255"><input type="text" id="updBGC-R" value="255"><input type="text" id="updBGC-G" value="15"><input type="text" id="updBGC-B" value="100"><br></form>
-    <form> :IconURI <input type="text" id="updUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
-  
-
     <br><button id="unpin">Unpin</button>
-    <form> ID <input type="text" name="fname" value="12345"><br></form>
-    
-    <br><button id="checkpin">Check Pin</button><br>
-    <br><button id="CheckTheme">CheckTheme</button><br>
-    <br><button id="titleBarColor">Change Title Bar</button><br>
-    <br><button id="compactOverlay">Compact Overlay Toggle</button><br>
-
+    <br><button id="checkpin">Check Pin</button>
+    <br><button id="CheckTheme">CheckTheme</button>
+    <br><button id="titleBarColor">Change Title Bar</button>
+    <br><button id="compactOverlay">Compact Overlay Toggle</button>
     <br><button id="addTimeline">Timeline</button><br>
-    <form> :Id <input type="text" id="timeId" value="23456"><br></form>
-    <form> :Title <input type="text" id="timeTitle" value="Timeline Title"><br></form>
-    <form> :Body <input type="text" id="timeBody" value="Timeline Body"><br></form>
-    <form> :IconURI <input type="text" id="timeUri" value="ms-appx:///images/Square150x150Logo.png"><br></form>
-    <form> :Act URL<input type="text" id="timeAct" value="https://www.google.com"><br></form>
-
     <br><button id="background">Change Background</button>
-    <form> URI <input type="text" name="bgURI"><br></form>
 
     <br><br><div class="ex2">Console:</div>
     <pre class="ex1" id="log" display="block" font-family="monospace" white-space="pre" margin="1em 0"></pre>
 
   </div><br><br>
-    <!--
-      Note, normally you cannot link directly to typescript files in an html file
-      but for simplicity of this learning starter, i have set it up to enable this
-    -->
     <script src="dist/pwa.js"></script>
     <script>
-      let tileBtn = document.getElementById('createtile');
-      tileBtn.onclick = _ => pwa.createSecondaryTile(
-        document.getElementById("pinIdInput").value, { // TileId
-          title: document.getElementById("pinTextInput").value,
-          activationArguments: document.getElementById("pinArgumentInput").value,
-          logoUri: document.getElementById("pinUri").value,
-          foregroundText: document.getElementById("pinFTextInput").value,
-          backgroundColorWin: document.getElementById("pinBGCWin").value, // accepts Windows.UI.Colors.[Color]  Leave '' to use ARGB
-          backgroundColor: { // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
-            a: document.getElementById("pinBGC-A").value,
-            r: document.getElementById("pinBGC-R").value,
-            g: document.getElementById("pinBGC-G").value,
-            b: document.getElementById("pinBGC-B").value
-          }
-        });
+/* =========================== /
+/          In-App Console      /
+/ =========================== */
+(function () {
+    var old = console.log;
+    var logger = document.getElementById('log');
+    console.log = function () {
+        for (var i = 0; i < arguments.length; i++) {
+            if (typeof arguments[i] == 'object') {
+                logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+            } else {
+                logger.innerHTML += arguments[i] + '<br />';
+            }
+        }
+    }
+})();
 
-        let titleBtn = document.getElementById('titleBarColor');
-        titleBtn.onclick = _ => pwa.changeAppTitleBarColor({ // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
-    backgroundColor: {a: 255,r: 100,g: 200,b: 225},
-    foregroundColor: {a: 255,r: 125,g: 225,b: 250},
-    inactiveBackgroundColor: {a: 100,r: 205,g: 0,b: 0},
-    inactiveForegroundColor: {a: 100,r: 255,g: 30,b: 30}
-        });
+/* =========================== /
+/      button controller       /
+/ =========================== */
+      let tileBtn = document.getElementById('createtile');
+      tileBtn.onclick = _ => pwa.createSecondaryTile('12345',
+      {
+          title: 'Title',
+          activationArguments: 'Args',
+          logoUri: 'ms-appx:///images/Square150x150Logo.png',
+          foregroundText: 'light',
+          backgroundColorWin: '', // accepts Windows.UI.Colors.[Color]  Leave '' to use ARGB
+          backgroundColor: { // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
+            a: 255,
+            r: 255,
+            g: 222,
+            b: 111
+          }
+      });
+
+      let updateTileBtn = document.getElementById("update");
+      updateTileBtn.onclick = _ => pwa.updateSecondaryTile('12345',
+      {
+          displayName: 'Update', // accepts strings. Keep short to avoid truncation.
+          showNameOnSquare: 1, // accepts 0 or 1. 0 is to hide displayName, 1 is to show displayName                foregroundText: (document.getElementById("updFTextInput") as any).value, // changes text color between 'dark' or 'light'
+          backgroundColorWin: '', // accepts Windows.UI.Colors.[Color]  Leave '' to use ARGB
+          backgroundColor: { // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
+            a: 255,
+            r: 255,
+            g: 222,
+            b: 111
+          },
+          squareTinyUri: 'ms-appx:///images/Square150x150Logo.png', //Square30x30Logo                squareSmallUri: (document.getElementById("updUri") as any).value, //Square70x70Logo
+          squareMedUri: 'ms-appx:///images/Square150x150Logo.png', //Square150x150Logo
+          squareWideUri:  'ms-appx:///images/Square150x150Logo.png', //Square310x150Logo
+          squareLargeUri: 'ms-appx:///images/Square150x150Logo.png', //Square310x310Logo
+      });
+
+
+      let checkPinBtn = document.getElementById("checkpin")
+      checkPinBtn.onclick = _ => {
+        var isPinned = Windows.UI.StartScreen.SecondaryTile.exists('12345');
+        console.log(isPinned);
+      };
+
+      let unpinBtn = document.getElementById("unpin")
+      unpinBtn.onclick = _ => pwa.removeSecondaryTile((document.getElementById("unpinId")).value);
+
+      let checkThemeBtn = document.getElementById("CheckTheme")
+      checkThemeBtn.onclick = _ => {
+        var theme = pwa.checkForDarkTheme();
+        console.log(theme);
+      };
+
+    let compactBtn = document.getElementById("compactOverlay")
+    compactBtn.onclick = _ => {
+        var forceCompactOverlay = false;
+        var Promise = pwa.toggleCompactOverlayMode(forceCompactOverlay);
+    };
+
+    let titleBtn = document.getElementById('titleBarColor');
+    titleBtn.onclick = _ => pwa.changeAppTitleBarColor({ // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
+        backgroundColor: {a: 255,r: 200,g: 200,b: 225},
+        foregroundColor: {a: 255,r: 125,g: 225,b: 250},
+        inactiveBackgroundColor: {a: 100,r: 205,g: 0,b: 0},
+        inactiveForegroundColor: {a: 100,r: 255,g: 30,b: 30}
+    });
+
+    let changebgBtn = document.getElementById("background")
+    changebgBtn.onclick = _ => pwa.changeDesktopBackgroundImage("images/Square150x150Logo.png");
+
+    let timelineBtn = document.getElementById("addTimeline")
+    timelineBtn.onclick = _ => pwa.addTimelineActivity({
+        id: 12345,
+        title: 'Timeline Title',
+        bodyText: 'Timeline Body',
+        imagePath: 'images/Square150x150Logo.png',
+        activationUri: 'https://www.microsoft.com/en-us/'
+    });
+
+
+
+
+
+
+
+
+
+
+        
     </script>
   </body>
 </html>
