@@ -79,7 +79,13 @@ pwa.toggleCompactOverlayMode()
 Options group includes id, title, bodytext, imagepath, and activationUri. <br>
 Example:
 ```js
-pwa.addTimelineActivity({id: 12345, title: 'Title!', bodytext: 'Information!', imagepath: 'Uri', activationUri: 'Uri'})
+pwa.addTimelineActivity({
+    id: 12345,
+    title: 'Title!',
+    bodytext: 'Information!',
+    imagepath: 'Uri',
+    activationUri: 'Uri'
+})
 ```
 ## changeDesktopBackgroundImage(localImagePath)
 Change desktop background to provided image <br>
