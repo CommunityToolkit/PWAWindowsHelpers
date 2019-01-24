@@ -60,16 +60,8 @@ window.onload = function () {
         util.changeAppTitleBarColor({ // ARGB settings, all accept 0-255 decimal or 0x## hexadecimal
             backgroundColor: { a: 255, r: 24, g: 260, b: 216 },
             foregroundColor: { a: 255, r: 22, g: 211, b: 262 },
-            buttonBackgroundColor: { a: 255, r: 54, g: 260, b: 116 },
-            buttonForegroundColor: { a: 255, r: 232, g: 111, b: 162 },
-            buttonHoverBackgroundColor: { a: 255, r: 19, g: 221, b: 40 },
-            buttonHoverForegroundColor: { a: 255, r: 25, g: 255, b: 255 },
-            buttonPressedBackgroundColor: { a: 255, r: 22, g: 211, b: 162 },
-            buttonPressedForegroundColor: { a: 255, r: 54, g: 260, b: 116 },
             inactiveBackgroundColor: { a: 255, r: 135, g: 11, b: 199 },
-            inactiveForegroundColor: { a: 255, r: 232, g: 21, b: 162 },
-            buttonInactiveBackgroundColor: { a: 255, r: 135, g: 241, b: 199 },
-            buttonInactiveForegroundColor: { a: 255, r: 232, g: 211, b: 162 }
+            inactiveForegroundColor: { a: 255, r: 232, g: 21, b: 162 }
         });
     };
 
