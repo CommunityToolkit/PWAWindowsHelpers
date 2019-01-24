@@ -1,4 +1,4 @@
-# Simple Progressive Web App API
+# Helpers for Progressive Web Apps running on Windows
 
 Github
 - Download pwa.js from dist folder and add to your project
