@@ -187,16 +187,8 @@ export function changeAppTitleBarColor(colorOptions) {
         var customColors = {
             backgroundColor: colorOptions.backgroundColor,
             foregroundColor: colorOptions.foregroundColor,
-            buttonBackgroundColor: colorOptions.buttonBackgroundColor,
-            buttonForegroundColor: colorOptions.buttonForegroundColor,
-            buttonHoverBackgroundColor: colorOptions.buttonHoverBackgroundColor,
-            buttonHoverForegroundColor: colorOptions.buttonHoverForegroundColor,
-            buttonPressedBackgroundColor: colorOptions.buttonPressedBackgroundColor,
-            buttonPressedForegroundColor: colorOptions.buttonPressedForegroundColor,
             inactiveBackgroundColor: colorOptions.inactiveBackgroundColor,
-            inactiveForegroundColor: colorOptions.inactiveForegroundColor,
-            buttonInactiveBackgroundColor: colorOptions.buttonInactiveBackgroundColor,
-            buttonInactiveForegroundColor: colorOptions.buttonInactiveForegroundColor
+            inactiveForegroundColor: colorOptions.inactiveForegroundColor
         };
 
         var titleBar = Windows.UI.ViewManagement.ApplicationView.getForCurrentView().titleBar;

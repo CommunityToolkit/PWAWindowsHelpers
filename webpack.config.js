@@ -6,7 +6,7 @@ module.exports = {
     },
     output : {
         filename: 'pwa.js',
-        library: 'PWA',
+        library: 'pwa',
         path: path.resolve(__dirname, 'dist')
     }
 };
