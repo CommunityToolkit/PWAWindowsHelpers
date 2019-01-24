@@ -1,6 +1,6 @@
 # Simple Progressive Web App API
 
-Github: `https://github.com/bixybixy2/TS-PWAAPI`
+Github
 - Download pwa.js from dist folder and add to your project
 
 NPM: `https://www.npmjs.com/package/ts-pwaapi`
