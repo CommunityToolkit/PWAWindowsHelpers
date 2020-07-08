@@ -1,3 +1,9 @@
+# This project is discontinued
+
+We no longer recommend using WinRT calls from JavaScript. Development focus is currently on the Chromium based engine for the Edge browser and [Progressive Web App technology](http://docs.pwabuilder.com/what/is/a/pwa/2018/02/03/pwa-min-requirements.html). Some of the features presented here are/will be replaced by a common standard API.
+
+Please have a look at the [PWA Builder components page](https://components.pwabuilder.com) to learn more about this new approach and for new code using standardized API calls.
+
 # Helpers for Progressive Web Apps running on Windows
 
 Github
